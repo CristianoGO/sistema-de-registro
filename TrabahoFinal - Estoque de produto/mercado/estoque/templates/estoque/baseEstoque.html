@@ -1,0 +1,91 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--  -->
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'estoque/iconesF/monitor.svg' %}">
+	<!--  -->
+	<title>Site de Registro</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'estoque/css/bootstrap.min.css' %}" type = "text/css"/>
+	<link rel="stylesheet" href="{% static 'estoque/css/datatables.min.css' %}" type = "text/css"/>
+	<link rel="stylesheet" href="{% static 'estoque/css/meuEstilo.css' %}" type = "text/css"/>
+	
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only"><strong>Registro de Produto</strong></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{%url 'home'%}"><span id="estoque-brand"><strong>Registro de Produto</strong> <img src="../static/estoque/iconesO/home.svg" alt="" width="30px" height="30px"></span></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				{%if user.is_authenticated%}
+				<ul class="nav navbar-nav">
+					<li><a href="{%url 'produtos'%}"><strong>Administrar produtos <img src="../static/estoque/iconesF/file-plus.svg" alt="" width="18px" height="18px"></strong></a></li>
+					<li><a href="{%url 'compra'%}"><strong>Registrar uma compra <img src="../static/estoque/iconesF/archive.svg" alt="" width="18px" height="18px"></strong></a></li>
+					<li><a href="{%url 'listagem_compras'%}"><strong>Lista de compras registradas <img src="../static/estoque/iconesF/list.svg" alt="" width="18px" height="18px"></strong></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li id="first-li-navbar-right" class="color-gold"><strong>{{user.username}}</strong><div class="circulo"><img src="../static/estoque/iconesO/smiley.svg" alt="IdentificadorPerfil" width="25px" height="25px"></div></li>
+					<li ><a href="{%url 'logout'%}" ><strong>Logout</strong> <img src="../static/estoque/iconesO/sign-out.svg" alt="#" width="25px" height="25px"><span class="sr-only">(current)</span></a></li>
+				</ul>
+				{%endif%}
+			</div>
+		</div>
+	</nav>
+	<br>
+	<div class="container">
+		<div class="centro">
+			<center>
+				{% include "estoque/includes/mensagens.html" %}
+			</center>
+		</div>
+
+		{% block content %}
+		{% endblock %}
+		<br>
+	</div>
+	<script src="{% static 'estoque/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'estoque/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'estoque/js/datatables.min.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			$('.estoqueDatatable').DataTable( {
+				"language": {
+					"sEmptyTable": "Nenhum registro encontrado",
+					"sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+					"sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+					"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+					"sInfoPostFix": "",
+					"sInfoThousands": ".",
+					"sLengthMenu": "_MENU_ resultados por página",
+					"sLoadingRecords": "Carregando...",
+					"sProcessing": "Processando...",
+					"sZeroRecords": "Nenhum registro encontrado",
+					"sSearch": "Pesquisar",
+					"oPaginate": {
+						"sNext": "Próximo",
+						"sPrevious": "Anterior",
+						"sFirst": "Primeiro",
+						"sLast": "Último"
+					},
+					"oAria": {
+						"sSortAscending": ": Ordenar colunas de forma ascendente",
+						"sSortDescending": ": Ordenar colunas de forma descendente"
+					}
+				}
+			} );
+		});
+	</script>
+</body>
+</html>

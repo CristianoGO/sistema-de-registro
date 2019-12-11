@@ -1,0 +1,26 @@
+{% extends "estoque/baseEstoque.html" %} 
+
+{% block content %} 
+
+<div class="center-div bigger-center-div" >
+    <h2><strong>Editando compra de:</strong><br><img src="../static/estoque/iconesF/corner-left-down.svg" alt="" width="18px" height="18px">
+        <br>{{compra}}</h2>
+        <div class="form-wrapper">
+            <form action="{% url 'compra'%}{{compra.id}}" method="post">
+                {{ form }}
+                {% csrf_token %}
+                <input type="submit" value="Editar Compra" />
+            </form>
+        </div>
+        <a href="{%url 'listagem_compras'%}"><li><img src="../static/estoque/iconesO/reply.svg" alt="" width="20px" height="20px"> <strong>Voltar</strong></li></a>
+        <br>
+        <center>    
+            <a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+            <a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+            <a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+        </center>
+    </div>
+    <div class="center-div4">
+    </div>
+
+    {% endblock %}

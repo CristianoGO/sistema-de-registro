@@ -1,0 +1,82 @@
+{% extends "estoque/baseEstoque.html" %} 
+
+{% block content %} 
+<div class="center-div">
+    <h1 id="produto"></h1>
+    <h2><strong>Novos Produtos</strong></h2>
+    <br>
+    <br>
+    <div class='form-wrapper'>
+        <form action="{%url 'produtos'%}" method="post">
+            {{ form }}
+            {% csrf_token %}
+            <br>
+            <br>
+            <input type="submit" value="Adicionar novo produto"/>
+        </form>
+    </div>
+    <a href="{%url 'home'%}"><li><img src="../static/estoque/iconesO/reply.svg" alt="" width="20px" height="20px"> <strong>Voltar</strong></li></a>
+    <a href="#listagem"><li><strong>Listagem dos produtos</strong></li></a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+    <a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+    <a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+</div>
+<div class="center-div2">
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 class="table-title" id="listagem"><strong>Listando produtos <img src="../static/estoque/iconesF/list.svg" alt="" width="40px" height="40px"></strong></h2>
+<div class="fundo">
+    <table class="estoqueDatatable" data-page-length='10'> 
+        <thead>
+            <tr>
+                <th><strong>Nome do Produto</strong></th>
+                <th><strong>Estoque</strong></th>
+                <th><strong>Preço Médio</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produto_list %}
+            <tr>
+                <td>{{produto.nome}}</td>
+                <td>
+                    {%if produto.estoque%}
+                    {{produto.estoque}}
+                    {%else%}
+                    0
+                    {%endif%}
+                </td>
+                <td>
+                    {%if produto.valor_medio%}
+                    R$ {{produto.valor_medio}}
+                    {%else%}
+                    R$ 0
+                    {%endif%}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="#produto"><li id="voltar-listagem"><img src="../static/estoque/iconesO/arrow-up.svg" alt="" width="20px" height="20px"> <strong>Topo da página</strong></li></a>
+    <br>
+    <center>    
+        <a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+        <a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+        <a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+    </center>
+    <br>
+</div>
+
+{% endblock %}

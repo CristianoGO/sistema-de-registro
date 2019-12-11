@@ -1,0 +1,65 @@
+{% extends "estoque/baseEstoque.html" %} 
+
+{% block content %} 
+
+<h2 class="table-title" id="listagem-title"><strong>Registro de Compras</strong></h2>
+
+<div class="fundo">
+    <table class="estoqueDatatable" data-page-length='10'>
+        <thead>
+            <tr>
+                <th><strong>Nome do Produto</strong></th>
+                <th><strong>Quantidade de compra</strong></th>
+                <th><strong>Preço total</strong></th>
+                <th><strong>Editar</strong></th>
+                <th><strong>Deletar</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compra in compra_list %}
+            <tr>
+                <td> {{compra.produto}} </td>
+                <td> {{compra.quantidade}} </td>
+                <td> R$ {{compra.valor}} </td>
+                <td> <a href="{% url 'compra'%}{{compra.id}}" ><strong>Editar</strong></a> </td>
+                <!-- <td> <a class='delete' href="/deletar_compra/{{compra.id}}"> Deletar </a> </td> -->
+                <td><a data-toggle="modal" data-target="#myModal{{compra.id}}" class='delete'><strong>Apagar</strong></a></td>
+            </tr>
+
+            <!-- Modal -->
+            <div id="myModal{{compra.id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{compra}}s</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Tem certeza que deseja apagar esta compra?</strong></p>
+                            <p><b><strong>Produto:</strong></b> {{compra.produto}}</p>
+                            <p><b><strong>Quantidade:</strong></b> {{compra.quantidade}}</p>
+                            <p><b><strong>Valor:</strong></b> {{compra.valor}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/deletar_compra/{{compra.id}}"><button type="button" class="btn btn-danger"><strong>Apagar</strong></button></a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><strong>Voltar</strong></button>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{%url 'home'%}"><li id="voltar-listagem"><img src="../static/estoque/iconesO/reply.svg" alt="" width="20px" height="20px"> <strong>Voltar</strong></li></a>
+    <br>
+    <center>    
+        <a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+        <a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+        <a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+    </center>
+    <br>
+</div>
+
+
+{% endblock %}

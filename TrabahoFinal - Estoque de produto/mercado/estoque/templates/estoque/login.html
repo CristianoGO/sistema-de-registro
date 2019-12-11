@@ -1,0 +1,30 @@
+{% extends "estoque/baseEstoque.html" %} 
+
+{% block content %} 
+
+<div class="center-div">
+	<h2><strong>Página de login</strong> <br><br><img src="../static/estoque/iconesF/user.svg" alt="" width="40px" height="40px"></h2>
+	<br>
+	<div class='form-wrapper'>
+		<form action="{%url 'login' %}" method="post">
+			{{ form }}
+			{% csrf_token %}
+			<br>
+			<br>
+			<input type="submit" value="Logar" />
+		</form>
+	</div>
+	<a href="{%url 'registrar'%}"><li><strong>Cadastre-se no sistema!</strong></li></a>
+	<a href="{%url 'enviar'%}"><strong>Esqueceu sua senha?</strong></a>
+	<br>
+	<br>
+	<br>
+	<br>
+	<a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+	<a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+	<a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+</div>
+<div class="center-div2">
+</div>
+
+{% endblock %}

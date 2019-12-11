@@ -1,0 +1,36 @@
+{% extends "estoque/baseEstoque.html" %} 
+
+{% block content %} 
+
+<div class="center-div">
+    <div class="container" style="width: 345px">
+        <form action="{% url 'enviar'%}" method="POST">
+            {% csrf_token %}
+            <br>
+            <br>
+            <br>
+            {% if msg %}
+            <div align="center"> <div class="alert alert-danger" role="alert"> <h3>Enviaremos uma mensagem de confirmação em seu email.</h3></div></div>
+            {% endif %}
+            <h1><strong>Recuperar Senha</strong></h1><br>
+            <label for="exampleInputEmail1"><strong>Digite seu email</strong></label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required><br>
+            <input type="submit" value="Enviar" />
+            <input type="reset" value="Limpar" />
+            <a href="{%url 'listagem_compras'%}"><li><img src="../static/estoque/iconesO/reply.svg" alt="" width="20px" height="20px"> <strong>Voltar</strong></li></a>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+    <a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+    <a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+</div>
+<div class="center-div2">
+</div>
+
+{% endblock %}

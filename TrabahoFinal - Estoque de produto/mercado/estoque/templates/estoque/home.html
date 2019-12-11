@@ -1,0 +1,27 @@
+{% extends "estoque/baseEstoque.html" %}
+
+{% block content %} 
+
+<div class="center-div top-to-bottom">
+	<h2><strong>Área de trabalho do R.P.</strong><h3><strong><br>Bem vindo!</strong></h3></h2>
+	<br>
+	<br>
+	<br>
+    <ul>
+        <a href="{%url 'produtos'%}"><li><strong>Administrar produtos</strong></li></a>
+        <a href="{%url 'compra'%}"><li><strong>Registrar compra de um produto</strong></li></a>
+        <a href="{%url 'listagem_compras'%}"><li><strong>Listagem de compras registradas</strong></li></a>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+	<a href="https://www.facebook.com/"><img src="../static/estoque/imgs/facebook.png" alt="" class="a"> </a>
+	<a href="https://www.google.com/"><img src="../static/estoque/imgs/googleplus.png" alt="" class="a"></a>
+	<a href="https://www.youtube.com/?hl=pt&gl=BR"><img src="../static/estoque/imgs/youtube.png" alt="" class="a" width="30px"></a>
+</div>
+<div class="center-div2">
+</div>
+
+{% endblock %}
